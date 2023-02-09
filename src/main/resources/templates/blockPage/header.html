@@ -1,0 +1,8 @@
+<div th:fragment="nav">
+    <nav class="navbar bg-dark" data-bs-theme="dark">
+    <span th:each="user: ${allUsers}" th:text="${user.getName()}"></span>
+  <a href="/logout"><button type="button" class="btn btn-primary ">Выйти</button></a>
+
+</nav>
+</div>
+

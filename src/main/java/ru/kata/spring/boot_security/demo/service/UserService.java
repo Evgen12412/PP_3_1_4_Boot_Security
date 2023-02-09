@@ -48,12 +48,13 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+    public List<Role> allRoles() {
+        return roleRepository.findAll();
+    }
+
     public boolean saveUser(User user) {
-        User userdb = userRepository.findByUsername(user.getUsername());
-        if (userdb!= null) {
-            return false;
-        }
-        user.setRoles(Collections.singleton(new Role( 1L,"ROLE_USER")));
+//        user.setRoles(Collections.singleton(new Role( 2L,"ROLE_USER")));
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -64,7 +65,6 @@ public class UserService implements UserDetailsService {
             userRepository.deleteById(userId);
             return true;
         }
-         System.out.println("DELETE");
         return false;
     }
 
