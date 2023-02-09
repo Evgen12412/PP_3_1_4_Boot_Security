@@ -7,14 +7,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.service.UserService;
+import ru.kata.spring.boot_security.demo.service.role.RoleServiceInterface;
+import ru.kata.spring.boot_security.demo.service.user.UserServiceInterface;
 
 import java.util.List;
 
 @Controller
 public class AdminController {
+
+    private final UserServiceInterface userService;
+    private final RoleServiceInterface roleService;
     @Autowired
-    private UserService userService;
+    public AdminController(UserServiceInterface userService, RoleServiceInterface roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @GetMapping("/admin")
     public String userList(Model model) {
@@ -38,7 +45,7 @@ public class AdminController {
 
     @GetMapping("/addNewUser")
     public String addNewUser(@ModelAttribute("user") User user,Model model) {
-        List<Role> allRoles = userService.allRoles();
+        List<Role> allRoles = roleService.allRoles();
         model.addAttribute("allRoles", allRoles);
         return "user-info";
 
@@ -47,12 +54,12 @@ public class AdminController {
     @PostMapping("/addNewUser")
     public String createUser(@ModelAttribute("user") User user) {
 
-        userService.createUser(user);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
-        List<Role> allRoles = userService.allRoles();
+        List<Role> allRoles = roleService.allRoles();
         model.addAttribute("allRoles", allRoles);
         model.addAttribute("user", userService.findUserById(id));
 

@@ -2,3 +2,8 @@
    display: flex;
 }
 
+.nav-tabs {
+   width: 80%;
+   padding-left: 97px;
+}
+

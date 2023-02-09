@@ -24,6 +24,14 @@
         <input class="form-control" type="text" th:field="*{password}" id="password">
         <br/>
         <br/>
+        <label for="age">Enter age: </label>
+        <input class="form-control" type="text" th:field="*{age}" id="age">
+        <br/>
+        <br/>
+        <label for="email">Enter email: </label>
+        <input class="form-control" type="text" th:field="*{email}" id="email">
+        <br/>
+        <br/>
 
         <select class="form-select" size="2" aria-label="size 2 select example" th:field="*{roles}" >
         <option th:each="role: ${allRoles}" th:selected="${role.name}"

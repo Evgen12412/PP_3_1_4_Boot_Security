@@ -11,28 +11,37 @@
   <h2>User info</h2>
   <br/>
 
-  <form th:method="POST" th:action="@{/addNewUser}" th:object="${user}">
-    <label for="firstName">Enter first name: </label>
-    </label><input type ="text" th:field="*{name}" id="firstName">
-    <br/>
-    <br>
-    <label for="surname">Enter surname:   </label>
-    </label><input type ="text" th:field="*{surname}" id="surname">
-    <br/>
-    <br/>
-    <label for="password">Enter Password: </label>
-    </label><input type ="text" th:field="*{password}" id="password">
-    <br/>
-    <br>
-    <select class="form-select" size="2" aria-label="size 2 select example" th:field="*{roles}" >
-        <option th:each="role: ${allRoles}" th:selected="${user.getAuthorities().contains(role)}"
-                th:value="${role.id}"
-                th:text="${role}">
+                    <form th:method="POST" th:action="@{/addNewUser}" th:object="${user}">
+                        <label for="firstName">Enter first name: </label>
+                        <input type="text" th:field="*{name}" id="firstName">
+                        <br/>
+                        <br>
+                        <label for="surname">Enter surname: </label>
+                        <input type="text" th:field="*{surname}" id="surname">
+                        <br/>
+                        <br/>
+                        <label for="password">Enter Password: </label>
+                        <input type="text" th:field="*{password}" id="password">
+                        <br/>
+                        <br>
+                        <label for="age">Enter Age: </label>
+                        <input type="text" th:field="*{age}" id="age">
+                        <br/>
+                        <br>
+                        <label for="email">Enter Email: </label>
+                        <input type="text" th:field="*{email}" id="email">
+                        <br/>
+                        <br>
+                        <select class="form-select" size="2" aria-label="size 2 select example" th:field="*{roles}">
+                            <option th:each="role: ${allRoles}" th:selected="${user.getAuthorities().contains(role)}"
+                                    th:value="${role.id}"
+                                    th:text="${role}">
 
-        </option>
-      </select>
-    <input type="submit" value="add" class="mt-2">
+                            </option>
+                        </select>
+                        <input type="submit" value="add" class="mt-2">
 
-  </form>
+                    </form>
+
 </body>
 </html>

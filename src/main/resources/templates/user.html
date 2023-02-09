@@ -18,6 +18,10 @@
 
     <th>Password</th>
 
+    <th>Age</th>
+
+    <th>Email</th>
+
     <th>Roles</th>
 
     </thead>
@@ -27,6 +31,8 @@
         <td th:text="${user.getName()}">name</td>
         <td th:text="${user.getSurname()}">surname</td>
         <td th:text="${user.getPassword()}">password</td>
+        <td th:text="${user.getAge()}">age</td>
+        <td th:text="${user.getEmail()}">email</td>
         <td th:text="${user.getAuthorities()}"></td>
 
     </tr>
