@@ -1,0 +1,63 @@
+<div th:fragment="modal">
+
+
+    <div class="modal fade myForm" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="field-table">
+                    <div class="modal-body ">
+
+                        <form th:method="PATCH" th:action="@{/editUser/{id}}">
+
+                            <label class="label-modal" for="user-name"> Name: </label>
+                            <input type="text" id="user-name" th:name="name" class="input-modal">
+                            <br/>
+                            <br>
+                            <label class="label-modal" for="user-surname">surname: </label>
+                            <input type="text" id="user-surname" th:name="surname" class="input-modal">
+                            <br/>
+                            <br/>
+                            <label class="label-modal" for="user-password">Password: </label>
+                            <input type="text" id="user-password" th:name="password" class="input-modal">
+                            <br/>
+                            <br>
+                            <label class="label-modal" for="user-age">Age: </label>
+                            <input type="text" id="user-age" th:name="age" class="input-modal">
+                            <br/>
+                            <br>
+                            <label class="label-modal" for="user-email">Email: </label>
+                            <input type="text" id="user-email" th:name="email" class="input-modal">
+                            <br/>
+                            <br>
+                            <label class="label-modal" for="role">Role: </label>
+                            <select class="form-select select-modal" size="2" aria-label="size 2 select example"
+                                    id="role">
+                                <option th:each="role: ${allRoles}" th:selected="${role.name}"
+                                        id="user-role"
+                                        th:value="${role.id}"
+                                        th:text="${role}"
+                                        th:name="role">
+
+                                </option>
+                            </select>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="save-user-btn" class="btn btn-primary">Save</button>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

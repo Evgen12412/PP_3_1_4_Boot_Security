@@ -25,16 +25,16 @@ public class UserResource {
         this.roleService = roleService;
     }
 
-    @GetMapping("/{userid}")
-    public User findById(@PathVariable Long userid, Model model) {
+    @GetMapping("/{userId}")
+    public User findById(@PathVariable Long userId, Model model) {
         List<Role> allRoles = roleService.allRoles();
         model.addAttribute("allRoles", allRoles);
-        return userService.findUserById(userid);
+        return userService.findUserById(userId);
 
     }
 
-//    @PostMapping
-//    public User create(@RequestBody User user) {
-//        return userService.saveUser(user);
-//    }
+    @PostMapping("/{userId}")
+    public void create(@RequestBody User user) {
+        userService.saveUser(user);
+    }
 }
