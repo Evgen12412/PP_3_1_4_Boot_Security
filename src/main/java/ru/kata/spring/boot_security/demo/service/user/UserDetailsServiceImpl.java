@@ -11,16 +11,17 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import java.util.Optional;
 
 @Service
-public class UserDetailsServiceImp implements UserDetailsService {
-
+public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
+
     @Autowired
-    public UserDetailsServiceImp(UserRepository userRepository) {
+    public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Optional<User> personOptional = userRepository.findByUsername(username);
 
         if (personOptional.isEmpty()) {

@@ -1,8 +1,21 @@
 <div th:fragment="nav">
-    <nav class="navbar bg-dark" data-bs-theme="dark">
-    <span  th:each="user: ${getUser}" th:text="${user.getName()}" class="cl-header"></span>
-  <a href="/logout"><button type="button" class="btn btn-primary mr">Выйти</button></a>
 
-</nav>
+    <div class="row">
+    <div class="col-12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 p-2 bg-dark text-white ">
+                    <a th:text="*{principal.getUsername()}" class="font-weight-bold text-white" id="headerUsername"></a>
+                    <a> with roles:</a>
+                    <a th:switch="${#lists.size(principal.getRoleList())}">
+                        <span th:case="'1'" th:text="${principal.getRoleList().get(0).getRole().toLowerCase()}"></span>
+                        <span th:case="'2'"
+                              th:text="${principal.getRoleList().get(0).toString()+' '+principal.getRoleList().get(1).toString()}"></span></a>
+                    <a href="/logout"><button type="button" class="btn btn-primary mr float-right">Выйти</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 

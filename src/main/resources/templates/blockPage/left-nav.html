@@ -1,6 +1,10 @@
 <div class="nav-left" th:fragment="nav-left">
-  <nav class="nav flex-column">
-  <a class="nav-link active" aria-current="page" href="/admin">ADMIN</a>
-  <a class="nav-link" href="/user">USER</a>
-</nav>
+    <div class="">
+        <div class="list-group list-group-flush">
+            <a href="/admin" class="list-group-item list-group-item-action active nav-link" aria-current="true">
+                Admin
+            </a>
+            <a href="/admin/show" class="list-group-item list-group-item-action nav-link">User</a>
+        </div>
+    </div>
 </div>
